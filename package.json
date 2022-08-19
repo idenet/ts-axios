@@ -1,0 +1,51 @@
+{
+  "name": "ts-axios",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/ts-axios.cjs",
+  "module": "./dist/ts-axios.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/ts-axios.cjs",
+      "import": "./dist/ts-axios.mjs"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "commit": "git add . && git cz"
+  },
+  "lint-staged": {
+    "src/**/*.{vue,ts}": [
+      "prettier --write .",
+      "eslint  --fix --cache"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@types/node": "^18.7.6",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "commitizen": "^4.2.5",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "git-cz": "^4.9.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.0.7"
+  }
+}
