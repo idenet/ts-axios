@@ -1,6 +1,7 @@
 // changelog 配置，commit 规则也在这里进行配置
 // 参考文档：https://www.npmjs.com/package/git-cz
 
+// eslint-disable-next-line no-undef
 module.exports = {
   disableEmoji: false,
   // format: '{type}{scope}: {emoji}{subject}',

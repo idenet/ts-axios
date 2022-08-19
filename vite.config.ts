@@ -17,7 +17,7 @@ const getPackageNameCamelCase = () => {
 const fileName = {
   es: `${getPackageName()}.mjs`,
   cjs: `${getPackageName()}.cjs`,
-  iife: `${getPackageName()}.iife.js`
+  iife: `${getPackageName()}.iife.js`,
 }
 
 export default defineConfig({
@@ -26,7 +26,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'src/main.ts'),
       name: getPackageNameCamelCase(),
       formats: ['es', 'cjs', 'iife'],
-      fileName: (format) => fileName[format]
-    }
-  }
+      fileName: (format) => fileName[format],
+    },
+  },
 })
