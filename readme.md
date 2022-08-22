@@ -1,3 +1,9 @@
 # ts-axios 学习项目
 
-首先弄一个 ts-lib 的启动器，以后要做这些就方便了，使用`vite`打包，利用`eslint和prettier`进行代码格式化，利用`husky commitlint git-cz`进行提交的信息校验和提交前的代码格式化
+因为现在`github`上的`lib-start`都比较老，因此自行搭建了一个继承多个功能的工具
+
+- `vite`打包工具
+- `eslint prettier`代码格式化
+- `commitlint git-cz`生成规范化的提交注释
+- `husky`更简单的使用 githook
+- `vitese`测试
