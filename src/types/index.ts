@@ -22,6 +22,11 @@ export interface AxiosRequestConfig {
   headers?: any
   responseType?: XMLHttpRequestResponseType
   timeout?: number
+  transformRequest: AxiosTransformer | AxiosTransformer[]
+  transformResponse: AxiosTransformer | AxiosTransformer[]
+  cancelToken?: CancelToken
+
+  [propName: string]: any
 }
 
 export interface AxiosResponse<T = any> {
@@ -44,6 +49,13 @@ export interface AxiosError extends Error {
 }
 
 export interface Axios {
+  defaults: AxiosRequestConfig
+
+  interceptors: {
+    request: AxiosIntercepterManager<AxiosRequestConfig>
+    response: AxiosIntercepterManager<AxiosResponse>
+  }
+
   request<T = any>(config: AxiosRequestConfig): AxiosPromise<T>
   get<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
   delete<T = any>(url: string, config?: AxiosRequestConfig): AxiosPromise<T>
@@ -72,6 +84,14 @@ export interface AxiosInstance extends Axios {
   <T = any>(rl: string, config?: AxiosRequestConfig): AxiosPromise<T>
 }
 
+export interface AxiosStatic extends AxiosInstance {
+  create(config?: AxiosRequestConfig): AxiosInstance
+
+  CancelToken: CancelTokenStatic
+  Cancel: CancelStaitc
+  isCancel: (val: any) => boolean
+}
+
 export interface AxiosIntercepterManager<T> {
   use(resolved: ResolvedFn<T>, rejected: rejectedFn): number
   eject(id: number): void
@@ -83,4 +103,42 @@ export interface ResolvedFn<T> {
 
 export interface rejectedFn {
   (error: any): any
+}
+
+export interface AxiosTransformer {
+  (data: any, headers?: any): any
+}
+
+export interface CancelToken {
+  promise: Promise<Cancel>
+  reason?: Cancel
+
+  throwIfRequested(): void
+}
+
+export interface Canceler {
+  (message?: string): void
+}
+
+export interface CancelExcutor {
+  (cancel: Canceler): void
+}
+
+export interface CancelTokenSource {
+  token?: CancelToken
+  cancel: Canceler
+}
+
+export interface CancelTokenStatic {
+  new (executor: CancelExcutor): CancelToken
+
+  source(): CancelTokenSource
+}
+
+export interface Cancel {
+  message?: string
+}
+
+export interface CancelStaitc {
+  new (message?: string): Cancel
 }
